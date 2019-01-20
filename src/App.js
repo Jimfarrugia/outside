@@ -32,17 +32,17 @@ class App extends React.Component {
 
     const translateTime = time => {
       let date = new Date(time * 1000),
-        ampm = date.getHours() < 13 ? "AM" : "PM",
+        ampm = date.getHours() < 13 ? "am" : "pm",
         hour =
           ((date.getHours() % 12 || 12) < 10 ? "0" : "") +
           (date.getHours() % 12 || 12),
         mins = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes(),
-        readableTime = hour + ":" + mins + " " + ampm;
+        readableTime = hour + ":" + mins + ampm;
       return readableTime;
     };
 
     const kelvinToCelcius = temperature => {
-      return (temperature - 273.15).toFixed(2) + "°C";
+      return (temperature - 273.15).toFixed(1) + "°C";
     };
 
     if (city && country) {

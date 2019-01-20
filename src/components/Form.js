@@ -28,7 +28,7 @@ const Form = props => (
             placeholder="Country..."
           />
         </div>
-        <button type="submit" className="btn-success">
+        <button type="submit" className="btn btn-success">
           Search
         </button>
       </div>

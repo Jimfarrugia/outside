@@ -1,9 +1,10 @@
 body {
-  background: #0039cb;
+  background: #0d47a1;
   color: #fff;
 }
 #page-header {
-  border-bottom: 2px solid #768fff;
+  background: #002171;
+  border-bottom: 2px solid #5472d3;
 }
 #page-header h1 {
   font-size: 4rem;
@@ -16,16 +17,48 @@ body {
   padding-bottom: 100px;
 }
 .location-form {
-  background: #2962ff;
+  background: #002171;
   width: fit-content;
   padding: 25px;
-  border: 2px solid #768fff;
+  border: 2px solid #5472d3;
   margin: -43px auto 50px;
 }
 .location-form .col {
   padding: 0 5px;
 }
+.location-form input,
+.location-form input:focus {
+  background: #768fff;
+  border: 1px solid #768fff;
+  color: #fff;
+}
+.location-form ::placeholder {
+  color: #fff;
+}
+.location-form input:-webkit-autofill {
+  box-shadow: inset 0 0 0px 9999px #768fff;
+  -webkit-box-shadow: inset 0 0 0px 9999px #768fff;
+  -webkit-text-fill-color: #fff !important;
+}
 .location-form button {
   padding: 5px 10px 6px;
   margin: 0 5px;
+  font-weight: 500;
+}
+.weather-stats {
+  max-width: 550px;
+  margin: 0 auto;
+}
+.weather-stats p {
+  font-size: 1.25rem;
+  text-align: center;
+}
+.location {
+  font-size: 4rem;
+}
+.temperature {
+  font-size: 6rem;
+}
+.minmax {
+  font-size: 2rem;
 }
