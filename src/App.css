@@ -2,6 +2,9 @@ body {
   background: #0d47a1;
   color: #fff;
 }
+/* 
+    Header 
+*/
 #page-header {
   background: #002171;
   border-bottom: 2px solid #5472d3;
@@ -16,6 +19,9 @@ body {
   text-align: center;
   padding-bottom: 100px;
 }
+/*
+    Form
+*/
 .location-form {
   background: #002171;
   width: fit-content;
@@ -45,12 +51,15 @@ body {
   margin: 0 5px;
   font-weight: 500;
 }
+/*
+    Weather
+*/
 .weather-stats {
   max-width: 550px;
   margin: 0 auto;
 }
 .weather-stats p {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 .location {

@@ -2,6 +2,7 @@ import React from "react";
 
 const Weather = props => (
   <div className="weather-stats">
+    {/* Location */}
     {props.city && props.country && (
       <p>
         <span className="location">
@@ -9,11 +10,13 @@ const Weather = props => (
         </span>
       </p>
     )}
+    {/* Temperature */}
     {props.temperature && (
       <p>
         <span className="temperature">{props.temperature}</span>
       </p>
     )}
+    {/* Min and Max Temperature */}
     {props.temp_min && props.temp_max && (
       <p>
         <span className="minmax">
@@ -22,14 +25,18 @@ const Weather = props => (
         </span>
       </p>
     )}
+    {/* Conditions */}
     {props.description && <p>Conditions: {props.description}</p>}
+    {/* Humidity */}
     {props.humidity && <p>Humidity: {props.humidity}</p>}
+    {/* Sunrise and Sunset */}
     {props.sunrise && props.sunset && (
       <p>
         Sunrise: {props.sunrise}
         &nbsp; Sunset: {props.sunset}
       </p>
     )}
+    {/* Errors */}
     {props.error && <p>{props.error}</p>}
   </div>
 );
