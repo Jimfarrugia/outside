@@ -1,0 +1,31 @@
+body {
+  background: #0039cb;
+  color: #fff;
+}
+#page-header {
+  border-bottom: 2px solid #768fff;
+}
+#page-header h1 {
+  font-size: 4rem;
+  text-align: center;
+  padding: 50px 0;
+}
+#page-header h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding-bottom: 100px;
+}
+.location-form {
+  background: #2962ff;
+  width: fit-content;
+  padding: 25px;
+  border: 2px solid #768fff;
+  margin: -43px auto 50px;
+}
+.location-form .col {
+  padding: 0 5px;
+}
+.location-form button {
+  padding: 5px 10px 6px;
+  margin: 0 5px;
+}
