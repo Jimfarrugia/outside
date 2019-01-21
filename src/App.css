@@ -12,12 +12,12 @@ body {
 #page-header h1 {
   font-size: 4rem;
   text-align: center;
-  padding: 50px 0;
+  padding: 25px 0;
 }
 #page-header h2 {
   font-size: 2.5rem;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 75px;
 }
 /*
     Form
@@ -27,7 +27,7 @@ body {
   width: fit-content;
   padding: 25px;
   border: 2px solid #5472d3;
-  margin: -48px auto 50px;
+  margin: -48px auto 25px;
 }
 .location-form .col {
   padding: 0 5px;
@@ -57,15 +57,16 @@ body {
 .weather-stats {
   max-width: 550px;
   margin: 0 auto;
-}
-.weather-stats p {
   font-size: 1.25rem;
   text-align: center;
+}
+.weather-stats .toggle-temp {
+  margin: 25px 0;
 }
 .image-wrapper {
   max-width: 200px;
   height: auto;
-  margin: 50px auto 25px;
+  margin: 25px auto;
 }
 .location {
   font-size: 3.5rem;
@@ -74,6 +75,9 @@ body {
   font-size: 2rem;
   text-transform: capitalize;
 }
-.temperature {
+p.current-temperature {
   font-size: 3rem;
+}
+p.celcius-farenheit {
+  font-size: 1rem;
 }

@@ -16,7 +16,7 @@ const Weather = props => (
         <img src={props.img} alt={props.description} />
       </p>
     )}
-    {/* Conditions */}
+    {/* Description */}
     {props.description && (
       <p>
         <span className="description">{props.description}</span>
@@ -24,9 +24,7 @@ const Weather = props => (
     )}
     {/* Temperature */}
     {props.temperature && (
-      <p>
-        <span className="temperature">{props.temperature}</span>
-      </p>
+      <p className="current-temperature">{props.temperature}</p>
     )}
     {/* Min and Max Temperature */}
     {props.temp_min && props.temp_max && (
@@ -36,6 +34,18 @@ const Weather = props => (
           &nbsp; Max: {props.temp_max}
         </span>
       </p>
+    )}
+    {props.temperature && (
+      <div className="toggle-temp">
+        <div className="btn-group" role="group">
+          <button type="button" className="btn btn-light">
+            °C
+          </button>
+          <button type="button" className="btn btn-outline-light">
+            °F
+          </button>
+        </div>
+      </div>
     )}
     {/* Humidity */}
     {props.humidity && <p>Humidity: {props.humidity}</p>}
