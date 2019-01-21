@@ -31,65 +31,6 @@ class App extends React.Component {
     );
     const data = await api_call.json();
 
-    const translateTime = time => {
-      let date = new Date(time),
-        ampm = date.getHours() < 13 ? "am" : "pm",
-        hour =
-          ((date.getHours() % 12 || 12) < 10 ? "0" : "") +
-          (date.getHours() % 12 || 12),
-        mins = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes(),
-        readableTime = hour + ":" + mins + ampm;
-      return readableTime;
-    };
-
-    const kelvinToCelcius = temperature => {
-      return (temperature - 273.15).toFixed(1) + "°C";
-    };
-
-    // function: getImage will determine which image url to use based on the current weather conditions/description
-    const getImage = descriptionID => {
-      let URL = "";
-      // Weather descriptions have specific ids in
-      //    the OpenWeatherMap.org Current Weather API.
-      // 800: Clear
-      if (descriptionID === 800) {
-        return (URL = "img/sun.svg");
-      }
-      // 801: Few Clouds
-      if (descriptionID === 801) {
-        return (URL = "img/cloud-and-sun.svg");
-      }
-      // 80x: Clouds, 7xx: Atmosphere (haze, mist, etc)
-      if (
-        descriptionID.toString().charAt(0) === "8" ||
-        descriptionID.toString().charAt(0) === "7"
-      ) {
-        return (URL = "img/cloud.svg");
-      }
-      // 6xx: Snow
-      if (descriptionID >= 615) {
-        return (URL = "img/snowstorm.svg");
-      }
-      if (descriptionID >= 600) {
-        return (URL = "img/snow.svg");
-      }
-      // 5xx: Rain
-      if (descriptionID >= 500) {
-        return (URL = "img/rain.svg");
-      }
-      // 3xx: Drizzle
-      if (descriptionID >= 300) {
-        return (URL = "img/rain-and-sun.svg");
-      }
-      // 2xx: Thunderstorm
-      if (descriptionID >= 200) {
-        return (URL = "img/thunderstorm.svg");
-      }
-      return console.log(
-        "Could not match current conditions with image. URL: " + URL
-      );
-    };
-
     if (city && country) {
       console.log(data);
 
@@ -103,7 +44,6 @@ class App extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity + "%",
         description: data.weather[0].description,
-        // img
         img: getImage(data.weather[0].id),
         error: ""
       });
@@ -150,3 +90,79 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+    Function:   translateTime
+    Arguments:  time
+    Desc:       a unix timecode is passed in and converted to a more readable string.
+*/
+/* There's an issue with the sunrise, sunset times */
+const translateTime = time => {
+  let date = new Date(time * 1000),
+    ampm = date.getHours() < 13 ? "am" : "pm",
+    hour =
+      ((date.getHours() % 12 || 12) < 10 ? "0" : "") +
+      (date.getHours() % 12 || 12),
+    mins = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes(),
+    readableTime = hour + ":" + mins + ampm;
+  return readableTime;
+};
+
+/*
+    Function:   kelvinToCelcius
+    Arguments:  temperature
+    Desc:       a temperature in degrees Kelvin passed in,
+                a string is returned after being converted to degrees celcius,
+                to one decimal place and concatenated with "°C".
+*/
+const kelvinToCelcius = temperature => {
+  return (temperature - 273.15).toFixed(1) + "°C";
+};
+
+/*
+    Function:   getImage
+    Arguments:  descriptionID
+    Desc:       A descriptionID is passed in and if it matches the id of a weather description in the API,
+                a relevant image url will be returned.  
+                If the conditions are not meant, log to the console.
+*/
+const getImage = descriptionID => {
+  let URL = "";
+  // 800: Clear
+  if (descriptionID === 800) {
+    return (URL = "img/sun.svg");
+  }
+  // 801: Few Clouds
+  if (descriptionID === 801) {
+    return (URL = "img/cloud-and-sun.svg");
+  }
+  // 80x: Clouds, 7xx: Atmosphere (haze, mist, etc)
+  if (
+    descriptionID.toString().charAt(0) === "8" ||
+    descriptionID.toString().charAt(0) === "7"
+  ) {
+    return (URL = "img/cloud.svg");
+  }
+  // 6xx: Snow
+  if (descriptionID >= 615) {
+    return (URL = "img/snowstorm.svg");
+  }
+  if (descriptionID >= 600) {
+    return (URL = "img/snow.svg");
+  }
+  // 5xx: Rain
+  if (descriptionID >= 500) {
+    return (URL = "img/rain.svg");
+  }
+  // 3xx: Drizzle
+  if (descriptionID >= 300) {
+    return (URL = "img/rain-and-sun.svg");
+  }
+  // 2xx: Thunderstorm
+  if (descriptionID >= 200) {
+    return (URL = "img/thunderstorm.svg");
+  }
+  return console.log(
+    "Could not match current conditions with image. URL: " + URL
+  );
+};
