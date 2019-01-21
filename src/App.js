@@ -46,6 +46,40 @@ class App extends React.Component {
       return (temperature - 273.15).toFixed(1) + "°C";
     };
 
+    // function: getImage will determine which image url to use based on the current weather conditions/description
+    const getImage = description => {
+      let URL = "";
+
+      switch (description) {
+        case "clear sky":
+          URL = "img/sun.svg";
+          break;
+        case "few clouds":
+        case "scattered clouds":
+        case "broken clouds":
+          URL = "img/cloud-and-sun.svg";
+          break;
+        case "mist":
+          URL = "img/cloud.svg";
+          break;
+        case "shower rain":
+        case "rain":
+          URL = "img/rain.svg";
+          break;
+        case "thunderstorm":
+          URL = "img/thunderstorm.svg";
+          break;
+        case "snow":
+          URL = "img/snow.svg";
+          break;
+        default:
+          console.log("Could not match weather description with an image");
+          break;
+      }
+
+      return URL;
+    };
+
     if (city && country) {
       console.log(data);
 
@@ -60,7 +94,7 @@ class App extends React.Component {
         humidity: data.main.humidity + "%",
         description: data.weather[0].description,
         // img
-        img: true,
+        img: getImage(data.weather[0].description),
         error: ""
       });
     } else {

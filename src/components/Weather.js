@@ -13,7 +13,7 @@ const Weather = props => (
     {/* Image */}
     {props.img && (
       <p className="image-wrapper">
-        <img src="img/sun.svg" alt="" />
+        <img src={props.img} alt={props.description} />
       </p>
     )}
     {/* Temperature */}
