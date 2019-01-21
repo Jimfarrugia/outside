@@ -8,9 +8,18 @@ const API_KEY = "209534645722eb9b2c001a7df46d6eef";
 
 class App extends React.Component {
   state = {
-    temperature: undefined,
-    temp_min: undefined,
-    temp_max: undefined,
+    temperature: {
+      c: undefined,
+      f: undefined
+    },
+    temp_min: {
+      c: undefined,
+      f: undefined
+    },
+    temp_max: {
+      c: undefined,
+      f: undefined
+    },
     sunrise: undefined,
     sunset: undefined,
     city: undefined,
@@ -35,9 +44,18 @@ class App extends React.Component {
       console.log(data);
 
       this.setState({
-        temperature: kelvinToCelcius(data.main.temp),
-        temp_min: kelvinToCelcius(data.main.temp_min),
-        temp_max: kelvinToCelcius(data.main.temp_max),
+        temperature: {
+          c: kelvinToCelcius(data.main.temp),
+          f: kelvinToFarenheit(data.main.temp)
+        },
+        temp_min: {
+          c: kelvinToCelcius(data.main.temp_min),
+          f: kelvinToFarenheit(data.main.temp_min)
+        },
+        temp_max: {
+          c: kelvinToCelcius(data.main.temp_max),
+          f: kelvinToFarenheit(data.main.temp_max)
+        },
         sunrise: translateTime(data.sys.sunrise),
         sunset: translateTime(data.sys.sunset),
         city: data.name,
@@ -49,9 +67,18 @@ class App extends React.Component {
       });
     } else {
       this.setState({
-        temperature: undefined,
-        temp_min: undefined,
-        temp_max: undefined,
+        temperature: {
+          c: undefined,
+          f: undefined
+        },
+        temp_min: {
+          c: undefined,
+          f: undefined
+        },
+        temp_max: {
+          c: undefined,
+          f: undefined
+        },
         sunrise: undefined,
         sunset: undefined,
         city: undefined,
@@ -71,9 +98,9 @@ class App extends React.Component {
         <div className="container">
           <Form getWeather={this.getWeather} />
           <Weather
-            temperature={this.state.temperature}
-            temp_min={this.state.temp_min}
-            temp_max={this.state.temp_max}
+            temperature={this.state.temperature.c}
+            temp_min={this.state.temp_min.c}
+            temp_max={this.state.temp_max.c}
             sunrise={this.state.sunrise}
             sunset={this.state.sunset}
             city={this.state.city}
