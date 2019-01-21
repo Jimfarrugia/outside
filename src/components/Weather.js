@@ -10,6 +10,12 @@ const Weather = props => (
         </span>
       </p>
     )}
+    {/* Image */}
+    {props.img && (
+      <p className="image-wrapper">
+        <img src="img/sun.svg" alt="" />
+      </p>
+    )}
     {/* Temperature */}
     {props.temperature && (
       <p>

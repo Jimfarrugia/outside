@@ -17,6 +17,7 @@ class App extends React.Component {
     country: undefined,
     humidity: undefined,
     description: undefined,
+    img: undefined,
     error: undefined
   };
 
@@ -58,6 +59,8 @@ class App extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity + "%",
         description: data.weather[0].description,
+        // img
+        img: true,
         error: ""
       });
     } else {
@@ -71,6 +74,7 @@ class App extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
+        img: undefined,
         error: "Please enter a location."
       });
     }
@@ -92,6 +96,7 @@ class App extends React.Component {
             country={this.state.country}
             humidity={this.state.humidity}
             description={this.state.description}
+            img={this.state.img}
             error={this.state.error}
           />
         </div>
