@@ -16,6 +16,12 @@ const Weather = props => (
         <img src={props.img} alt={props.description} />
       </p>
     )}
+    {/* Conditions */}
+    {props.description && (
+      <p>
+        <span className="description">{props.description}</span>
+      </p>
+    )}
     {/* Temperature */}
     {props.temperature && (
       <p>
@@ -31,8 +37,6 @@ const Weather = props => (
         </span>
       </p>
     )}
-    {/* Conditions */}
-    {props.description && <p>Conditions: {props.description}</p>}
     {/* Humidity */}
     {props.humidity && <p>Humidity: {props.humidity}</p>}
     {/* Sunrise and Sunset */}

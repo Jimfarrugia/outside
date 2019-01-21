@@ -59,7 +59,7 @@ body {
   margin: 0 auto;
 }
 .weather-stats p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
 }
 .image-wrapper {
@@ -68,11 +68,12 @@ body {
   margin: 50px auto 25px;
 }
 .location {
-  font-size: 4rem;
+  font-size: 3.5rem;
+}
+.description {
+  font-size: 2rem;
+  text-transform: capitalize;
 }
 .temperature {
-  font-size: 6rem;
-}
-.minmax {
-  font-size: 2rem;
+  font-size: 3rem;
 }
