@@ -1,34 +1,36 @@
 import React from "react";
 
 const Form = props => (
-  <div className="location-form form-group">
+  <div className='location-form form-group'>
     <form onSubmit={props.getWeather}>
-      <div className="row">
-        <div className="col">
-          <label className="sr-only" htmlFor="city">
+      <div className='row'>
+        <div className='col'>
+          <label className='sr-only' htmlFor='city'>
             Enter a city.
           </label>
           <input
-            type="text"
-            id="city"
-            className="form-control"
-            name="city"
-            placeholder="City..."
+            type='text'
+            id='city'
+            className='form-control'
+            name='city'
+            placeholder='City...'
+            defaultValue='Sydney' //for testing
           />
         </div>
-        <div className="col">
-          <label className="sr-only" htmlFor="country">
+        <div className='col'>
+          <label className='sr-only' htmlFor='country'>
             Enter a country.
           </label>
           <input
-            type="text"
-            id="country"
-            className="form-control"
-            name="country"
-            placeholder="Country..."
+            type='text'
+            id='country'
+            className='form-control'
+            name='country'
+            placeholder='Country...'
+            defaultValue='Australia' // for testing
           />
         </div>
-        <button type="submit" className="btn btn-success">
+        <button type='submit' className='btn btn-success'>
           Search
         </button>
       </div>
