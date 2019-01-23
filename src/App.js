@@ -31,9 +31,9 @@ class App extends React.Component {
 
     if (city && country) {
       this.setState({
-        temperature: kelvinToCelcius(data.main.temp),
-        temp_min: kelvinToCelcius(data.main.temp_min),
-        temp_max: kelvinToCelcius(data.main.temp_max),
+        temperature: data.main.temp,
+        temp_min: data.main.temp_min,
+        temp_max: data.main.temp_max,
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity + "%",
@@ -85,10 +85,6 @@ class App extends React.Component {
 }
 
 export default App;
-
-const kelvinToCelcius = temperature => {
-  return (temperature - 273.15).toFixed(1);
-};
 
 /*
     Function:   getImage

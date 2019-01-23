@@ -23,20 +23,19 @@ export class Weather extends React.Component {
     }
     // Change to celcius
     if (e.target.value === "celcius") {
-      return this.setState({
-        unit: "C"
-      });
+      return this.setState({ unit: "C" });
     }
     // Change to Farenheit
     if (e.target.value === "farenheit") {
-      return this.setState({
-        unit: "F"
-      });
+      return this.setState({ unit: "F" });
     }
   };
 
-  celciusToFarenheit = temperature => {
-    return (temperature * (9 / 5) + 32).toFixed(1);
+  kelvinToCelcius = temperature => {
+    return (temperature - 273.15).toFixed(1);
+  };
+  kelvinToFarenheit = temperature => {
+    return ((temperature - 273.15) * (9 / 5) + 32).toFixed(1);
   };
 
   render() {
@@ -67,21 +66,26 @@ export class Weather extends React.Component {
         {/* Temperature */}
         {props.temperature && state.unit && (
           <p className="current-temperature">
-            {state.unit === "C" && props.temperature + "°C"}
+            {state.unit === "C" &&
+              this.kelvinToCelcius(props.temperature) + "°C"}
             {state.unit === "F" &&
-              this.celciusToFarenheit(props.temperature) + "°F"}
+              this.kelvinToFarenheit(props.temperature) + "°F"}
           </p>
         )}
         {/* Min and Max Temperature */}
         {props.temp_min && props.temp_max && (
           <p>
             <span className="minmax">
-              Min: {state.unit === "C" && props.temp_min + "°C"}
+              Min:{" "}
+              {state.unit === "C" &&
+                this.kelvinToCelcius(props.temp_min) + "°C"}
               {state.unit === "F" &&
-                this.celciusToFarenheit(props.temp_min) + "°F"}
-              &nbsp; Max: {state.unit === "C" && props.temp_max + "°C"}
+                this.kelvinToFarenheit(props.temp_min) + "°F"}
+              &nbsp; Max:{" "}
+              {state.unit === "C" &&
+                this.kelvinToCelcius(props.temp_max) + "°C"}
               {state.unit === "F" &&
-                this.celciusToFarenheit(props.temp_max) + "°F"}
+                this.kelvinToFarenheit(props.temp_max) + "°F"}
             </span>
           </p>
         )}
