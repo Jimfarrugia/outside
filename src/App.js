@@ -93,9 +93,7 @@ const kelvinToCelcius = temperature => {
 /*
     Function:   getImage
     Arguments:  descriptionID
-    Desc:       A descriptionID is passed in and if it matches the id of a weather description in the API,
-                a relevant image url will be returned.  
-                If the conditions are not meant, log to the console.
+    Desc:       A descriptionID is passed in and if it matches the id of a weather description in the API, a relevant image url will be returned. If the conditions are not meant, log to the console.
 */
 const getImage = descriptionID => {
   let URL = "";
