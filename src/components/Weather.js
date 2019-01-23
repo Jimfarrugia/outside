@@ -87,13 +87,6 @@ export class Weather extends React.Component {
         )}
         {/* Humidity */}
         {props.humidity && <p>Humidity: {props.humidity}</p>}
-        {/* Sunrise and Sunset */}
-        {props.sunrise && props.sunset && (
-          <p>
-            Sunrise: {props.sunrise}
-            &nbsp; Sunset: {props.sunset}
-          </p>
-        )}
         {/* Change Temperature Unit*/}
         {props.temperature && (
           <div className="changeUnit">

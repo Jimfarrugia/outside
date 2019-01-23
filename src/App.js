@@ -11,8 +11,6 @@ class App extends React.Component {
     temperature: undefined,
     temp_min: undefined,
     temp_max: undefined,
-    sunrise: undefined,
-    sunset: undefined,
     city: undefined,
     country: undefined,
     humidity: undefined,
@@ -36,8 +34,6 @@ class App extends React.Component {
         temperature: kelvinToCelcius(data.main.temp),
         temp_min: kelvinToCelcius(data.main.temp_min),
         temp_max: kelvinToCelcius(data.main.temp_max),
-        sunrise: translateTime(data.sys.sunrise),
-        sunset: translateTime(data.sys.sunset),
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity + "%",
@@ -50,8 +46,6 @@ class App extends React.Component {
         temperature: undefined,
         temp_min: undefined,
         temp_max: undefined,
-        sunrise: undefined,
-        sunset: undefined,
         city: undefined,
         country: undefined,
         humidity: undefined,
@@ -72,8 +66,6 @@ class App extends React.Component {
             temperature={this.state.temperature}
             temp_min={this.state.temp_min}
             temp_max={this.state.temp_max}
-            sunrise={this.state.sunrise}
-            sunset={this.state.sunset}
             city={this.state.city}
             country={this.state.country}
             humidity={this.state.humidity}
@@ -91,21 +83,6 @@ export default App;
 
 const kelvinToCelcius = temperature => {
   return (temperature - 273.15).toFixed(1);
-};
-/*
-    Function:   translateTime
-    Arguments:  time
-    Desc:       a unix timecode is passed in and converted to a more readable string.
-*/
-const translateTime = time => {
-  let date = new Date(time * 1000),
-    ampm = date.getHours() < 13 ? "am" : "pm",
-    hour =
-      ((date.getHours() % 12 || 12) < 10 ? "0" : "") +
-      (date.getHours() % 12 || 12),
-    mins = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes(),
-    readableTime = hour + ":" + mins + ampm;
-  return readableTime;
 };
 
 /*
