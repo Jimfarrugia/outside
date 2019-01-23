@@ -2,6 +2,7 @@ import React from "react";
 import Titles from "./components/Titles";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
+import Footer from "./components/Footer";
 import "./App.css";
 
 const API_KEY = "209534645722eb9b2c001a7df46d6eef";
@@ -73,11 +74,7 @@ class App extends React.Component {
             img={this.state.img}
             error={this.state.error}
           />
-          <p className="portfolio-link">
-            <a href="http://jimfarrugia.com" title="Jim Farrugia's Portfolio">
-              By Jim Farrugia
-            </a>
-          </p>
+          <Footer />
         </div>
       </div>
     );

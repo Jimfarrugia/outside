@@ -95,9 +95,9 @@ p.celcius-farenheit {
   font-size: 1rem;
 }
 /*
-    Portfolio Link
+    Footer
 */
-.portfolio-link {
+#page-footer {
   text-align: center;
   margin-top: 50px;
 }
