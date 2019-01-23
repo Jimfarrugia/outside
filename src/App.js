@@ -32,12 +32,10 @@ class App extends React.Component {
     const data = await api_call.json();
 
     if (city && country) {
-      console.log(data);
-
       this.setState({
-        temperature: data.main.temperature,
-        temp_min: data.main.temp_min,
-        temp_max: data.main.temp_max,
+        temperature: kelvinToCelcius(data.main.temp),
+        temp_min: kelvinToCelcius(data.main.temp_min),
+        temp_max: kelvinToCelcius(data.main.temp_max),
         sunrise: translateTime(data.sys.sunrise),
         sunset: translateTime(data.sys.sunset),
         city: data.name,
@@ -68,7 +66,7 @@ class App extends React.Component {
     return (
       <div>
         <Titles />
-        <div className='container'>
+        <div className="container">
           <Form getWeather={this.getWeather} />
           <Weather
             temperature={this.state.temperature}
@@ -91,12 +89,14 @@ class App extends React.Component {
 
 export default App;
 
+const kelvinToCelcius = temperature => {
+  return (temperature - 273.15).toFixed(1);
+};
 /*
     Function:   translateTime
     Arguments:  time
     Desc:       a unix timecode is passed in and converted to a more readable string.
 */
-/* There's an issue with the sunrise, sunset times */
 const translateTime = time => {
   let date = new Date(time * 1000),
     ampm = date.getHours() < 13 ? "am" : "pm",
