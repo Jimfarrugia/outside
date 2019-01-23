@@ -81,7 +81,7 @@ a:active {
   margin-bottom: 25px;
 }
 .description {
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-transform: capitalize;
 }
 p.current-temperature {
@@ -90,6 +90,14 @@ p.current-temperature {
 @media (min-width: 576px) {
   .image-wrapper {
     max-width: 420px;
+  }
+  p.current-temperature {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 960px) {
+  .description {
+    font-size: 2.5rem;
   }
   p.current-temperature {
     font-size: 4.5rem;
