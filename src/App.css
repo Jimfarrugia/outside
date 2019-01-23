@@ -63,7 +63,7 @@ a:active {
     Weather
 */
 .weather-stats {
-  max-width: 550px;
+  max-width: 960px;
   margin: 0 auto;
   font-size: 1.25rem;
   text-align: center;
@@ -72,23 +72,28 @@ a:active {
   margin: 25px 0;
 }
 .image-wrapper {
-  max-width: 200px;
+  max-width: 250px;
   height: auto;
   margin: 25px auto;
 }
 .location {
-  font-size: 3rem;
-  line-height: 2;
+  font-size: 4rem;
+  margin-bottom: 25px;
 }
 .description {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-transform: capitalize;
 }
 p.current-temperature {
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
-p.celcius-farenheit {
-  font-size: 1rem;
+@media (min-width: 576px) {
+  .image-wrapper {
+    max-width: 420px;
+  }
+  p.current-temperature {
+    font-size: 4.5rem;
+  }
 }
 /*
     Footer

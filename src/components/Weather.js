@@ -45,75 +45,79 @@ export class Weather extends React.Component {
       <div className="weather-stats">
         {/* Location */}
         {props.city && props.country && (
-          <p>
-            <span className="location">
-              {props.city}, {props.country}
-            </span>
+          <p className="location">
+            {props.city}, {props.country}
           </p>
         )}
-        {/* Image */}
-        {props.img && (
-          <p className="image-wrapper">
-            <img src={props.img} alt={props.description} />
-          </p>
-        )}
-        {/* Description */}
-        {props.description && (
-          <p>
-            <span className="description">{props.description}</span>
-          </p>
-        )}
-        {/* Temperature */}
-        {props.temperature && state.unit && (
-          <p className="current-temperature">
-            {state.unit === "C" &&
-              this.kelvinToCelcius(props.temperature) + "°C"}
-            {state.unit === "F" &&
-              this.kelvinToFarenheit(props.temperature) + "°F"}
-          </p>
-        )}
-        {/* Min and Max Temperature */}
-        {props.temp_min && props.temp_max && (
-          <p>
-            <span className="minmax">
-              Min:{" "}
-              {state.unit === "C" &&
-                this.kelvinToCelcius(props.temp_min) + "°C"}
-              {state.unit === "F" &&
-                this.kelvinToFarenheit(props.temp_min) + "°F"}
-              &nbsp; Max:{" "}
-              {state.unit === "C" &&
-                this.kelvinToCelcius(props.temp_max) + "°C"}
-              {state.unit === "F" &&
-                this.kelvinToFarenheit(props.temp_max) + "°F"}
-            </span>
-          </p>
-        )}
-        {/* Humidity */}
-        {props.humidity && <p>Humidity: {props.humidity}</p>}
-        {/* Change Temperature Unit*/}
-        {props.temperature && (
-          <div className="changeUnit">
-            <div className="btn-group" role="group">
-              <button
-                onClick={this.changeUnit}
-                type="button"
-                className="btn btn-light"
-                value="celcius"
-              >
-                °C
-              </button>
-              <button
-                onClick={this.changeUnit}
-                type="button"
-                className="btn btn-outline-light"
-                value="farenheit"
-              >
-                °F
-              </button>
-            </div>
+        <div className="row">
+          <div className="col-sm">
+            {/* Image */}
+            {props.img && (
+              <p className="image-wrapper">
+                <img src={props.img} alt={props.description} />
+              </p>
+            )}
+            {/* Description */}
+            {props.description && (
+              <p>
+                <span className="description">{props.description}</span>
+              </p>
+            )}
           </div>
-        )}
+          <div className="col-sm">
+            {/* Change Temperature Unit*/}
+            {props.temperature && (
+              <div className="changeUnit">
+                <div className="btn-group" role="group">
+                  <button
+                    onClick={this.changeUnit}
+                    type="button"
+                    className="btn btn-light"
+                    value="celcius"
+                  >
+                    °C
+                  </button>
+                  <button
+                    onClick={this.changeUnit}
+                    type="button"
+                    className="btn btn-outline-light"
+                    value="farenheit"
+                  >
+                    °F
+                  </button>
+                </div>
+              </div>
+            )}
+            {/* Temperature */}
+            {props.temperature && state.unit && (
+              <p className="current-temperature">
+                {state.unit === "C" &&
+                  this.kelvinToCelcius(props.temperature) + "°C"}
+                {state.unit === "F" &&
+                  this.kelvinToFarenheit(props.temperature) + "°F"}
+              </p>
+            )}
+            {/* Min and Max Temperature */}
+            {props.temp_min && props.temp_max && (
+              <p>
+                <span className="minmax">
+                  Min:{" "}
+                  {state.unit === "C" &&
+                    this.kelvinToCelcius(props.temp_min) + "°C"}
+                  {state.unit === "F" &&
+                    this.kelvinToFarenheit(props.temp_min) + "°F"}
+                  <br /> Max:{" "}
+                  {state.unit === "C" &&
+                    this.kelvinToCelcius(props.temp_max) + "°C"}
+                  {state.unit === "F" &&
+                    this.kelvinToFarenheit(props.temp_max) + "°F"}
+                </span>
+              </p>
+            )}
+            {/* Humidity */}
+            {props.humidity && <p>Humidity: {props.humidity}</p>}
+          </div>
+        </div>
         {/* Errors */}
         {props.error && <p>{props.error}</p>}
       </div>
