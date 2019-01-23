@@ -8,18 +8,9 @@ const API_KEY = "209534645722eb9b2c001a7df46d6eef";
 
 class App extends React.Component {
   state = {
-    temperature: {
-      c: undefined,
-      f: undefined
-    },
-    temp_min: {
-      c: undefined,
-      f: undefined
-    },
-    temp_max: {
-      c: undefined,
-      f: undefined
-    },
+    temperature: undefined,
+    temp_min: undefined,
+    temp_max: undefined,
     sunrise: undefined,
     sunset: undefined,
     city: undefined,
@@ -44,18 +35,9 @@ class App extends React.Component {
       console.log(data);
 
       this.setState({
-        temperature: {
-          c: kelvinToCelcius(data.main.temp),
-          f: kelvinToFarenheit(data.main.temp)
-        },
-        temp_min: {
-          c: kelvinToCelcius(data.main.temp_min),
-          f: kelvinToFarenheit(data.main.temp_min)
-        },
-        temp_max: {
-          c: kelvinToCelcius(data.main.temp_max),
-          f: kelvinToFarenheit(data.main.temp_max)
-        },
+        temperature: data.main.temperature,
+        temp_min: data.main.temp_min,
+        temp_max: data.main.temp_max,
         sunrise: translateTime(data.sys.sunrise),
         sunset: translateTime(data.sys.sunset),
         city: data.name,
@@ -67,18 +49,9 @@ class App extends React.Component {
       });
     } else {
       this.setState({
-        temperature: {
-          c: undefined,
-          f: undefined
-        },
-        temp_min: {
-          c: undefined,
-          f: undefined
-        },
-        temp_max: {
-          c: undefined,
-          f: undefined
-        },
+        temperature: undefined,
+        temp_min: undefined,
+        temp_max: undefined,
         sunrise: undefined,
         sunset: undefined,
         city: undefined,
@@ -95,12 +68,12 @@ class App extends React.Component {
     return (
       <div>
         <Titles />
-        <div className="container">
+        <div className='container'>
           <Form getWeather={this.getWeather} />
           <Weather
-            temperature={this.state.temperature.c}
-            temp_min={this.state.temp_min.c}
-            temp_max={this.state.temp_max.c}
+            temperature={this.state.temperature}
+            temp_min={this.state.temp_min}
+            temp_max={this.state.temp_max}
             sunrise={this.state.sunrise}
             sunset={this.state.sunset}
             city={this.state.city}
@@ -133,20 +106,6 @@ const translateTime = time => {
     mins = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes(),
     readableTime = hour + ":" + mins + ampm;
   return readableTime;
-};
-
-/*
-    Function:   kelvinToCelcius
-    Arguments:  temperature
-    Desc:       a temperature in degrees Kelvin passed in,
-                a string is returned after being converted to degrees celcius,
-                to one decimal place and concatenated with "°C".
-*/
-const kelvinToCelcius = temperature => {
-  return (temperature - 273.15).toFixed(1) + "°C";
-};
-const kelvinToFarenheit = temperature => {
-  return ((temperature - 273.15) * (9 / 5) + 32).toFixed(1) + "°F";
 };
 
 /*
