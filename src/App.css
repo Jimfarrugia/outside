@@ -2,6 +2,16 @@ body {
   background: #0d47a1;
   color: #fff;
 }
+a:link,
+a:visited {
+  color: #768fff;
+  transition: 0.2s ease;
+}
+a:hover,
+a:active {
+  color: #fff;
+  text-decoration: none;
+}
 /* 
     Header 
 */
@@ -83,4 +93,11 @@ p.current-temperature {
 }
 p.celcius-farenheit {
   font-size: 1rem;
+}
+/*
+    Portfolio Link
+*/
+.portfolio-link {
+  text-align: center;
+  margin-top: 50px;
 }

@@ -73,6 +73,11 @@ class App extends React.Component {
             img={this.state.img}
             error={this.state.error}
           />
+          <p className="portfolio-link">
+            <a href="http://jimfarrugia.com" title="Jim Farrugia's Portfolio">
+              By Jim Farrugia
+            </a>
+          </p>
         </div>
       </div>
     );
