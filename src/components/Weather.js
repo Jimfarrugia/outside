@@ -39,7 +39,7 @@ export class Weather extends React.Component {
   };
 
   render() {
-    const state = this.state;
+    const { unit } = this.state;
     const props = this.props;
     return (
       <div className="weather-stats">
@@ -89,11 +89,10 @@ export class Weather extends React.Component {
               </div>
             )}
             {/* Temperature */}
-            {props.temperature && state.unit && (
+            {props.temperature && (
               <p className="current-temperature">
-                {state.unit === "C" &&
-                  this.kelvinToCelcius(props.temperature) + "°C"}
-                {state.unit === "F" &&
+                {unit === "C" && this.kelvinToCelcius(props.temperature) + "°C"}
+                {unit === "F" &&
                   this.kelvinToFarenheit(props.temperature) + "°F"}
               </p>
             )}
@@ -102,14 +101,12 @@ export class Weather extends React.Component {
               <p>
                 <span className="minmax">
                   Min:{" "}
-                  {state.unit === "C" &&
-                    this.kelvinToCelcius(props.temp_min) + "°C"}
-                  {state.unit === "F" &&
+                  {unit === "C" && this.kelvinToCelcius(props.temp_min) + "°C"}
+                  {unit === "F" &&
                     this.kelvinToFarenheit(props.temp_min) + "°F"}
                   <br /> Max:{" "}
-                  {state.unit === "C" &&
-                    this.kelvinToCelcius(props.temp_max) + "°C"}
-                  {state.unit === "F" &&
+                  {unit === "C" && this.kelvinToCelcius(props.temp_max) + "°C"}
+                  {unit === "F" &&
                     this.kelvinToFarenheit(props.temp_max) + "°F"}
                 </span>
               </p>
